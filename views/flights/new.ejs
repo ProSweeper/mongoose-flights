@@ -1,4 +1,33 @@
 <%- include('../partials/header') %>
-
+    <!-- // we want this to POST a new flight to /flights -->
+    <form action="/flights" method="POST">
+        <label>Airline
+            <select name="airline">Airline
+                <option value="" disabled selected hidden>Select Airline</option>
+                <option value="American">American</option>
+                <option value="Southwest">Southwest</option>
+                <option value="United">United</option>
+            </select>
+        </label><br>
+        <label>Airport
+            <select name="airport">Airport
+                <option value="" disabled selected hidden>Select Airport</option>
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+        </label><br>
+        <label>Flight Number
+            <input type="number" name="flightNO" placeholder="9999">
+        </label><br>
+        <label>Departure Date
+            <input type="text" 
+            name="departs" 
+            placeholder="<%= new Date(new Date().setFullYear(new Date().getFullYear() + 1)) %>"
+            onfocus="(this.type='date')"
+            >
+        </label>
+    </form>
 
 <%- include('../partials/footer') %>
