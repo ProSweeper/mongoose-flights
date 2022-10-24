@@ -2,7 +2,7 @@
     <!-- // we want this to POST a new flight to /flights -->
     <form action="/flights" method="POST">
         <label>Airline
-            <select name="airline">Airline
+            <select name="airline" required>Airline
                 <option value="" disabled selected hidden>Select Airline</option>
                 <option value="American">American</option>
                 <option value="Southwest">Southwest</option>
@@ -19,15 +19,16 @@
             </select>
         </label><br>
         <label>Flight Number
-            <input type="number" name="flightNO" placeholder="9999">
+            <input type="number" name="flightNO" placeholder="9999" required>
         </label><br>
         <label>Departure Date
             <input type="text" 
             name="departs" 
             placeholder="<%= new Date(new Date().setFullYear(new Date().getFullYear() + 1)) %>"
-            onfocus="(this.type='date')"
+            onfocus="(this.type='datetime-local')"
             >
-        </label>
+        </label><br>
+        <button type="submit">Add Flight</button>
     </form>
 
 <%- include('../partials/footer') %>
