@@ -13,7 +13,7 @@ function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
         console.log(flight);
         res.render('flights/show', {
-            title: `${flight.airline} ${flight.flightNO}`,
+            title: `${flight.airline} Airlines Flight ${flight.flightNO}`,
             flight
         });
     }); 

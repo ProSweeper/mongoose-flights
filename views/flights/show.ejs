@@ -16,5 +16,38 @@
         <th>Departure Date</th>
         <td><%= flight.departs %></td>
     </tr>
+    <tr>
+        <th>Destinations</th>
+        <% if (flight.destinations.length) { %>
+           <% flight.destinations.forEach(function(dest) { %>
+                <td><%= dest.airport %>, <%= dest.arrival %></td>
+           <% }) %>
+        <% } else { %>
+            <td>Add a destination below</td>
+        <% }%>
+    </tr>
  </table>
+<section>
+    <h3>Add a Destination</h3>
+    <form action="/flights/<%= flight._id %>/destinations" 
+        method="POST">
+        <label>Arriving at: 
+            <select name="airport">
+                <option value="" disabled selected hidden>Select Airport</option>
+                <% let airports = ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']; %>
+                <% let idx = airports.indexOf(flight.airport); %>
+                <% airports.splice(idx, 1); %>
+                <% airports.forEach(function(airport) { %>
+                    <option value="<%= airport %>"><%= airport %></option>
+                <% }); %>
+            </select>
+        </label> On 
+        <input type="text" 
+        name="arrival" 
+        placeholder="<%= new Date(new Date().setFullYear(new Date().getFullYear() + 1)) %>"
+        onfocus="(this.type='datetime-local')"
+        ><br>
+        <button type="submit">Add Destination</button>
+    </form>
+</section>
 <%- include('../partials/footer') %> 
