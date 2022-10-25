@@ -11,14 +11,17 @@ const ticketSchema = new Schema({
     },
     price: {
         type: Number,
+        // a minimum price of $0
         min: 0,
         required: true,
     },
     flight: {
+        // connect it to the flights data base
         type: Schema.Types.ObjectId,
         ref: 'Flight',
         required: true,
     }
 });
 
+// compile and export the ticket
 module.exports = mongoose.model('Ticket', ticketSchema);
