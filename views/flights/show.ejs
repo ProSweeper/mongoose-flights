@@ -26,6 +26,17 @@
             <td>Add a destination below</td>
         <% }%>
     </tr>
+    <tr>
+        <th>Tickets</th>
+        <% if (tickets.length) { %>
+            <% tickets.forEach(function(ticket){ %>
+                <td><%= ticket.seat %>, $<%= ticket.price %></td>
+           <% }) %> 
+            
+        <% } else { %>
+            <td>No Tickets Available</td>
+        <% } %>
+    </tr>
  </table>
 <section>
     <h3>Add a Destination</h3>
@@ -50,4 +61,7 @@
         <button type="submit">Add Destination</button>
     </form>
 </section>
+<div>
+    <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
+</div>
 <%- include('../partials/footer') %> 
